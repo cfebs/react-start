@@ -2,8 +2,15 @@
 
 Quick test bed for es6 react
 
-# Build
+## Build
 
 ```
 make
+```
+
+## Serve
+
+```
+make
+make serve
 ```
