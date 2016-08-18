@@ -3,13 +3,19 @@ SCSS_SOURCE_FILES := $(shell find ./src/scss -type f)
 PORT := 8181
 ADDR :='0.0.0.0'
 
-.PHONY: css js watch-js watch-css serve
+.PHONY: css js watch-js watch-css serve npm
 
-all: css js
+all: npm css js
 
-css: build/app.css
+css: npm build/app.css
 
-js: build/app.js
+js: npm build/app.js
+
+npm: .cache/npm
+
+.cache/npm: package.json
+	mkdir -p ./.cache
+	npm install && touch ./.cache/npm
 
 build/app.js: $(JS_SOURCE_FILES) index.html
 	mkdir -p build
